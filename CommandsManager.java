@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import fr.azuria.proxy.ProxyAPI;
 import fr.azuria.proxy.ProxyPlugin;
+import fr.azuria.proxy.core.commands.PartyCommand;
+import net.md_5.bungee.api.plugin.Command;
 
 import java.io.File;
 import java.io.FileNotFoundException;
