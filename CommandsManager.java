@@ -14,6 +14,10 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Copyright (c) 2020.
+ * This file is entirely part of Azuria and cannot be copied without Choukas permission
+ */
 public class CommandsManager {
 
     private ProxyPlugin plugin;
@@ -44,7 +48,7 @@ public class CommandsManager {
 
                 CustomCommand command = (CustomCommand) clazz.getDeclaredConstructor(CustomCommand.Deserializer.class, ProxyAPI.class).newInstance(deserializer, api);
 
-                plugin.getProxy().getPluginManager().registerCommand(plugin, command); // Once the command is parsed, we save it
+                this.plugin.getProxy().getPluginManager().registerCommand(plugin, command); // Once the command is parsed, we save it
             }
 
         } catch (FileNotFoundException | ClassNotFoundException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {

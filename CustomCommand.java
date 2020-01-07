@@ -25,16 +25,18 @@ public abstract class CustomCommand extends Command implements CommandExecutor {
     private ProxyAPI api;
 
     private String name;
-    private String permission;
-    private String[] aliases;
-    private String description;
-    private String notPermMessage;
-    private HashMap<String, CommandUsage> usages;
+    public String permission;
+    public String[] aliases;
+    public String description;
+    public String notPermMessage;
+    public HashMap<String, CommandUsage> usages;
 
     private static final String USAGE_HELP_FORMAT = "/%command% %usage% : %description%";
 
     private CustomCommand(Deserializer deserializer) {
         super(deserializer.name, deserializer.permission, deserializer.aliases);
+
+        System.out.println(deserializer.name + " " + deserializer.permission + " " + Arrays.toString(deserializer.aliases));
 
         this.name = deserializer.name;
         this.permission = deserializer.permission;
@@ -145,11 +147,11 @@ public abstract class CustomCommand extends Command implements CommandExecutor {
     @SuppressWarnings("unused") // Fields are automatically loaded by Gson
     public static class CommandUsage {
 
-        private String name;
-        private String usage;
-        private String description = "/";
-        private String permission;
-        private String notPermMessage = "Vous n'avez pas la permission d'éxécuter cette commande";
+        public String name;
+        public String usage;
+        public String description = "/";
+        public String permission;
+        public String notPermMessage = "Vous n'avez pas la permission d'éxécuter cette commande";
     }
 }
 
