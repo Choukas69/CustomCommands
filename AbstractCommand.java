@@ -8,6 +8,7 @@ import net.md_5.bungee.api.plugin.Command;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.Map;
 
 public abstract class AbstractCommand extends Command {
 
@@ -41,6 +42,10 @@ public abstract class AbstractCommand extends Command {
             }.getType();
 
             usages = gson.fromJson(jsonObject.get("usages"), type);
+
+            for (Map.Entry<String, CommandUsage> entry : usages.entrySet()) {
+                entry.getValue().name = entry.getKey();
+            }
         }
     }
 
@@ -53,4 +58,13 @@ public abstract class AbstractCommand extends Command {
         // Si tout est bon, on peut appeler le run
         this.run(sender, args);
     }
+
+    public static class CommandUsage {
+        private String name;
+        private String usage;
+        private String description = "/";
+        private String permission;
+        private String notPermMessage = "Vous n'avez pas la permission d'éxécuter cette commande";
+    }
 }
+
